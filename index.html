@@ -24,27 +24,20 @@
             <div class="z-50 hidden my-4 text-base list-none  divide-y divide-gray-100 rounded-lg shadow-sm bg-[rgba(46,46,46,1)]" id="dropdown-menu">
                 <ul class="py-2 font-medium" role="none">
                   <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                    <a  href="gaajen_resume.pdf" download="gaajen_resume.pdf" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
                       <div class="inline-flex items-center">
                         <i class="fa-solid fa-download w-3.5 h-3.5 rounded-full me-2 text-white" ></i>
-                        Project
+                        Resume 
                       </div>
                     </a>
                   </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
-                      <div class="inline-flex items-center">
-                        <i class="fa-solid fa-file-code w-3.5 h-3.5 rounded-full me-2 text-white"></i>
-                        Resume
-                      </div>
-                    </a>
-                  </li>
+                  
                 </ul>
               </div>
-            <div id="container_mail" class="relative flex flex-row justify-center items-center  " >
+            <a id="container_mail" class="relative flex flex-row justify-center items-center  "  href="mailto:gaajendren123@gmail.com">
                 <div id="box_mail" class="absolute inset-0 rounded-b-lg bg-[#2e2e2e] w-full h-full invisible"></div>
                 <i id="mail" class="fa-solid fa-envelope cursor-pointer fa-xl text-white transform transition-all duration-300 hover:scale-110 p-6 z-50"></i>     
-            </div>
+            </a>
         </div>
     </nav>
 
@@ -76,7 +69,7 @@
             <div class="text-white font-sans text-md md:text-xl max-[480px]:mb-4">Software Engineer / Developer</div>
 
             <div class="flex  justify-center items-center gap-4">
-                <div class="rounded-md group hover:text-teal-300 hover:border-teal-300  px-4 py-2 text-sm font-semibold text-gray-200 ring-1 ring-white-500  dark:text-gray-200 cursor-pointer"> <i class="!hidden md:!inline-block fa-solid fa-file-code w-3.5 h-3.5 rounded-full me-2 text-white group-hover:text-teal-200"></i>Resume</div>
+                <a href="gaajen_resume.pdf" download="gaajen_resume.pdf" class="rounded-md group hover:text-teal-300 hover:border-teal-300  px-4 py-2 text-sm font-semibold text-gray-200 ring-1 ring-white-500  dark:text-gray-200 cursor-pointer"> <i class="!hidden md:!inline-block fa-solid fa-file-code w-3.5 h-3.5 rounded-full me-2 text-white group-hover:text-teal-200"></i>Resume</a>
             </div>
         </div>
 
@@ -154,34 +147,99 @@
     </div>
 
     <div class="max-w-5xl m-auto p-6 mt-6 md:mt-22 ">
-        <div id="title" class="mb-10 opacity-0 transform transition-all duration-900 ease-in-out sticky top-10">
-          <h1 class="text-white text-center font-bold text-4xl ">LATEST WORK</h1>
+        <div id="title" class="pb-10 z-0 opacity-0 transform transition-all duration-900 ease-in-out sticky top-10">
+          <h1 class="text-white text-center font-bold text-4xl xl:text-6xl 2xl:text-8xl">LATEST WORK</h1>
         </div>
-      
-        <div class="container mb-8 opacity-0 transform transition-all duration-900 ease-in-out">
+    
+        <div class="container mb-8 opacity-0 transform transition-all duration-900 ease-in-out relative">
         
-            <div class="flex flex-col" id="cardContainer">
+            <div class="flex flex-col " id="cardContainer">
         
-                <div id="card1" class="mt-8 sticky top-[130px]">
-                    <div class="rounded-t-2xl w-full  shadow-lg bg-[#3f3f3f] p-2 px-4">
-                        <span class="text-gray-200  font-semibold text-sm line-clamp-1 md:line-clamp-none md:text-md ">Deep Learning Occupancy Management System</span>
+                <a href="https://github.com/gaajendren/library_occupancy" target="_blank" id="card1" class="mt-8 sticky top-[130px] xl:top-[156px] 2xl:top-[172px] cursor-pointer transition-all duration-200 ease-in-out hover:scale-[101%] ">
+                    <div class="h-[60svh] w-full">
+                        <div class="rounded-t-2xl w-full flex items-center gap-2  shadow-lg bg-[#3f3f3f] p-2 px-4 h-[12%]">
+                            <span class="text-gray-200  font-semibold text-sm line-clamp-1 md:line-clamp-none md:text-md ">Deep Learning Occupancy Management System</span>
+                            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20">
+                             Laravel
+                            </button>
+                            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-teal-100 text-teal-800 hover:bg-teal-200 focus:outline-hidden focus:bg-teal-200 disabled:opacity-50 disabled:pointer-events-none dark:text-teal-500 dark:bg-teal-800/30 dark:hover:bg-teal-800/20 dark:focus:bg-teal-800/20">
+                             Flask
+                            </button>
+                             <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-red-100 text-red-800 hover:bg-red-200 focus:outline-hidden focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-800/20 dark:focus:bg-red-800/20">
+                              AI
+                            </button>
+                        </div>
+                        <div class="bg-[#282828] w-full rounded-b-2xl shadow-lg h-[88%] ">
+                            <img class="object-cover object-top w-full h-full"  src="1.png" alt="">
+                        </div>
                     </div>
-                    <div class="bg-[#282828] w-full rounded-b-2xl shadow-lg h-[350px] pl-3"></div>
-                </div>
-        
-                <div id="card2" class="mt-8 sticky top-[130px]">
-                    <div class="rounded-t-2xl w-full  shadow-lg bg-[#3f3f3f] p-2 px-4">
-                        <span class="text-gray-200 font-semibold md:text-md ">Occupancy Management System</span>
+                   
+                </a>
+
+                 <a target="_blank" href="https://github.com/gaajendren/Repair-phone-management-system" id="card6" class="mt-8 sticky top-[130px] xl:top-[156px] 2xl:top-[172px] cursor-pointer transition-all duration-200 ease-in-out hover:scale-[101%] hover:bg-black/50">
+                    <div class="h-[60svh] w-full">
+                        <div class="rounded-t-2xl w-full flex items-center gap-2   shadow-lg bg-[#3f3f3f] p-2 px-4 h-[12%]">
+                            <span class="text-gray-200  font-semibold text-sm line-clamp-1 md:line-clamp-none md:text-md ">Mobile Repair Management System</span>
+                            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20">
+                             Laravel
+                            </button>
+                        </div>
+                        <div class="bg-[#282828] w-full rounded-b-2xl shadow-lg h-[88%] ">
+                            <img class="object-cover object-top w-full h-full"  src="5.png" alt="">
+                        </div>
                     </div>
-                    <div class="bg-[#282828] w-full rounded-b-2xl   h-[350px] pl-3"></div>
-                </div>
+                   
+                </a>
         
-                <div id="card3" class="mt-8 sticky top-[130px]">
-                    <div class="rounded-t-2xl w-full  shadow-lg bg-[#3f3f3f] p-2 px-4">
-                        <span class="text-gray-200 font-semibold md:text-md ">Another Project</span>
+              
+                <a id="card3" href="https://github.com/gaajendren/chat-messaging" target="_blank" class="mt-32 sticky  top-[130px] xl:top-[156px] 2xl:top-[172px] cursor-pointer transition-all duration-200 ease-in-out hover:scale-[101%] ">
+                       <div class="h-[60svh] w-full">
+                        <div class="rounded-t-2xl w-full flex items-center gap-2 shadow-lg bg-[#3f3f3f] p-2 px-4 h-[12%]">
+                            <span class="text-gray-200  font-semibold text-sm line-clamp-1 md:line-clamp-none md:text-md ">Real Time Messaging System</span>
+                            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20">
+                             Laravel
+                            </button>
+                             <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:outline-hidden focus:bg-yellow-200 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500 dark:bg-yellow-800/30 dark:hover:bg-yellow-800/20 dark:focus:bg-yellow-800/20">
+                              Reverb
+                            </button>
+                          
+                        </div>
+                        <div class="bg-[#282828] w-full rounded-b-2xl shadow-lg h-[88%] ">
+                            <img class="object-cover object-left md:object-bottom w-full h-full"  src="2.png" alt="">
+                        </div>
                     </div>
-                    <div class="bg-[#282828] w-full rounded-b-2xl  h-[350px] pl-3"></div>
-                </div>
+                </a>
+
+               
+                <a id="card4" target="_blank" href="https://github.com/gaajendren/3rd_marketplace" class="mt-32 sticky  top-[130px] xl:top-[156px] 2xl:top-[172px] cursor-pointer transition-all duration-200 ease-in-out hover:scale-[101%] ">
+                    <div class="h-[60svh] w-full">
+                        <div class="rounded-t-2xl w-full flex items-center  gap-2 shadow-lg bg-[#3f3f3f] p-2 px-4 h-[12%]">
+                            <span class="text-gray-200  font-semibold text-sm line-clamp-1 md:line-clamp-none md:text-md ">3rd Printing Marketplace</span>
+                            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20">
+                             Laravel
+                            </button>
+                             <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-teal-100 text-teal-800 hover:bg-teal-200 focus:outline-hidden focus:bg-teal-200 disabled:opacity-50 disabled:pointer-events-none dark:text-teal-500 dark:bg-teal-800/30 dark:hover:bg-teal-800/20 dark:focus:bg-teal-800/20">
+                             Vue
+                            </button>
+                        </div>
+                        <div class="bg-[#282828] w-full rounded-b-2xl shadow-lg h-[88%] "> <img class="object-cover md:object-fill object-top  w-full h-full"  src="3.png" alt=""></div>
+                    </div>
+                </a>
+
+                 <a href="https://github.com/gaajendren/e-commerce" target="_blank" id="card5" class="mt-32 sticky  top-[130px] xl:top-[156px] 2xl:top-[172px] cursor-pointer transition-all duration-200 ease-in-out hover:scale-[101%] ">
+                       <div class="h-[60svh] w-full">
+                        <div class="rounded-t-2xl w-full flex items-center gap-2 shadow-lg bg-[#3f3f3f] p-2 px-4 h-[12%]">
+                            <span class="text-gray-200  font-semibold text-sm line-clamp-1 md:line-clamp-none md:text-md ">Dress Printing System</span>
+                            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20">
+                             PHP
+                            </button>
+                        </div>
+                        <div class="bg-[#282828] w-full rounded-b-2xl shadow-lg h-[88%] ">
+                            <img class="object-cover object-top w-full h-full"  src="4.png" alt="">
+                        </div>
+                    </div>
+                </a>
+        
         
             </div>
         </div>
@@ -189,7 +247,7 @@
 
 
     <div id="contact" class="max-w-5xl m-auto p-6 py-16 flex items-center justify-center h-screen opacity-0 transform transition-all duration-900 ease-in-out">
-         <div class="rounded-xl bg-[#3b3b3b] my-12 w-full h-full ">
+         <div class="rounded-xl bg-[#3b3b3b] my-12 w-full h-full">
             <div class="flex flex-col w-full h-full justify-center items-center">
 
                 <div id="toast-success" class="hidden z-10 flex flex-row gap-3 items-center justify-center  w-fit p-4 mb-4  rounded-lg shadow-sm text-gray-400 bg-black/90" role="alert">
