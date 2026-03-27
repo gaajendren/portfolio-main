@@ -10,8 +10,8 @@
 
     <link rel="stylesheet" href="output.css">
     <link rel="stylesheet" href="style.css">
-  
 
+    
 </head>
 
 <body class="bg-[#1A1A1A]">
@@ -34,7 +34,7 @@
                   
                 </ul>
               </div>
-            <a id="container_mail" class="relative flex flex-row justify-center items-center  "  href="mailto:gaajendren123@gmail.com">
+            <a id="container_mail" class="relative flex flex-row justify-center items-center  " href="/cdn-cgi/l/email-protection#d3b4b2b2b9b6bdb7a1b6bde2e1e093b4beb2babffdb0bcbe">
                 <div id="box_mail" class="absolute inset-0 rounded-b-lg bg-[#2e2e2e] w-full h-full invisible"></div>
                 <i id="mail" class="fa-solid fa-envelope cursor-pointer fa-xl text-white transform transition-all duration-300 hover:scale-110 p-6 z-50"></i>     
             </a>
@@ -94,7 +94,7 @@
                     </div>
                     <p class="text-white font-semibold text-xl p-3">About Me</p>
                     <p class="text-start text-white  p-3  pt-1 pb-1">A Software Engineer, Studying at University Tun Hussein Onn Malaysia, taking the course of Bachelor of Computer Science (Software Engineer) with Honours</p>
-                    <p class="text-start text-white  p-3  pt-1 mb-4">✨ “Coding is a form of digital art.” 🎨💻</p>
+                    <p class="text-start text-white  p-3  pt-1 mb-4">✨ "Coding is a form of digital art." 🎨💻</p>
                 </div>
                 <div class="flex flex-col min-[480px]:flex-row  gap-4 w-full">
                     <div class="flex flex-row max-w-[200px] m-auto min-[480px]:max-w-[140px] ">
@@ -120,25 +120,26 @@
                
             </div>
            
+            <!-- Skills Panel -->
             <div class="bg-[rgba(46,46,46,0.75)]  rounded-2xl shadow-lg md:w-1/3 w-full h-full self-stretch flex flex-col justify-start items-start pl-3">
                 <p class="text-white font-semibold text-xl p-3">Skills</p>
                 <div class="pt-2 text-white flex flex-col w-full h-full mb-4 items-start justify-start  pr-3 gap-4">
     
-                    <div  class="bg-[#2e2e2e] cursor-pointer flex flex-row items-center justify-between  rounded-2xl p-4 py-3 shadow-md border border-yellow-400 w-full transform transition-transform duration-300 hover:scale-102">
-                        <h3  class="text-yellow-400 text-lg font-semibold ">AI Developer</h3>
-                        <i data-popover-target="popover-top" data-popover-placement="top" class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
+                    <div onclick="openDrawer('skill-ai')" class="skill-card bg-[#2e2e2e] flex flex-row items-center justify-between  rounded-2xl p-4 py-3 shadow-md border border-yellow-400 w-full transform transition-transform duration-300 hover:scale-102">
+                        <h3 class="text-yellow-400 text-lg font-semibold ">AI Developer</h3>
+                        <i class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
                     </div>
-                    <div class="bg-[#2e2e2e] cursor-pointer flex flex-row items-center  justify-between rounded-2xl p-4 py-3 shadow-md border border-blue-400 w-full transform transition-transform duration-300 hover:scale-102">
-                        <h3   class="text-blue-400 text-lg font-semibold ">Backend Developer </h3>       
-                        <i data-popover-target="popover-top2" data-popover-placement="top" class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
+                    <div onclick="openDrawer('skill-backend')" class="skill-card bg-[#2e2e2e] flex flex-row items-center  justify-between rounded-2xl p-4 py-3 shadow-md border border-blue-400 w-full transform transition-transform duration-300 hover:scale-102">
+                        <h3 class="text-blue-400 text-lg font-semibold ">Backend Developer </h3>       
+                        <i class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
                     </div>  
-                    <div class="bg-[#2e2e2e] cursor-pointer flex flex-row items-center justify-between  rounded-2xl p-4 py-3 shadow-md border border-pink-400 w-full transform transition-transform duration-300 hover:scale-102">
-                        <h3   class="text-pink-400 text-lg font-semibold ">Frontend Developer</h3>
-                        <i  data-popover-target="popover-top3" data-popover-placement="top" class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
+                    <div onclick="openDrawer('skill-frontend')" class="skill-card bg-[#2e2e2e] flex flex-row items-center justify-between  rounded-2xl p-4 py-3 shadow-md border border-pink-400 w-full transform transition-transform duration-300 hover:scale-102">
+                        <h3 class="text-pink-400 text-lg font-semibold ">Frontend Developer</h3>
+                        <i class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
                     </div>
-                    <div class="bg-[#2e2e2e] cursor-pointer flex flex-row items-center justify-between   rounded-2xl p-4 py-3 shadow-md border border-green-400 w-full transform transition-transform duration-300 hover:scale-102">
+                    <div onclick="openDrawer('skill-mobile')" class="skill-card bg-[#2e2e2e] flex flex-row items-center justify-between   rounded-2xl p-4 py-3 shadow-md border border-green-400 w-full transform transition-transform duration-300 hover:scale-102">
                         <h3 class="text-green-400 text-lg font-semibold ">Mobile Developer</h3>
-                        <i  data-popover-target="popover-top4" data-popover-placement="top"  class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
+                        <i class="fa-solid fa-angle-up fa-sm text-white hover:text-gray-500"></i>
                     </div>
                 
                 </div>
@@ -269,7 +270,7 @@
                         </svg>
                     </a>
                 
-                    <a href="mailto:gaajendren123@gmail.com" class="hover:opacity-80 cursor-pointer p-4 rounded-xl bg-[#2d2d2d]">
+                    <a href="/cdn-cgi/l/email-protection#741315151e111a1006111a454647341319151d185a171b19" class="hover:opacity-80 cursor-pointer p-4 rounded-xl bg-[#2d2d2d]">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#EA4335">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                         </svg>
@@ -284,43 +285,22 @@
             </div>
          </div>
      </div>
-      
-     
 
-    <div data-popover id="popover-top" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300  border border-yellow-400 rounded-lg shadow-xs opacity-0 bg-[#2e2e2e]">
-        <div class="px-3 py-2">
-            <p class="font-bold">YOLO, DeepSort, Face Recognition</p>
-        </div>
-        <div class="border-yellow-200" data-popper-arrow></div>
-    </div>
 
-    
-    <div data-popover id="popover-top2" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300  border border-blue-400 rounded-lg shadow-xs opacity-0 bg-[#2e2e2e]">
-        <div class="px-3 py-2">
-            <p class="font-bold">Laravel, PHP, MySQL</p>
+    <!-- ── Skill Drawer ── -->
+    <div id="drawer-overlay" class="hidden">
+        <div id="skill-drawer">
+            <div id="drawer-handle"></div>
+            <button id="drawer-close" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <p id="drawer-title"></p>
+            <div id="drawer-tags"></div>
         </div>
-        <div class="border-blue-200" data-popper-arrow></div>
-    </div>
-
-    <div data-popover id="popover-top3" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300  border border-pink-400 rounded-lg shadow-xs opacity-0 bg-[#2e2e2e]">
-        <div class="px-3 py-2">
-            <p class="font-bold">JavaScript, Tailwind CSS, Bootstrap</p>
-        </div>
-        <div class="border-pink-200" data-popper-arrow></div>
-    </div>
-
-    <div data-popover id="popover-top4" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300  border border-green-400 rounded-lg shadow-xs opacity-0 bg-[#2e2e2e]">
-        <div class="px-3 py-2">
-            <p class="font-bold">Java (Android)</p>
-        </div>
-        <div class="border-green-200" data-popper-arrow></div>
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="app.js"></script>
 </body>
-
-
-
 </html>

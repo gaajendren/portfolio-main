@@ -71,4 +71,74 @@ function show_toast(){
 }
 
 
+// ── Skill Drawer ──────────────────────────────────────────────────────────────
 
+const drawerData = {
+  'skill-ai':       { label: 'AI Developer',        color: '#facc15', border: 'border-yellow-400', tech: ['YOLO', 'DeepSort', 'Face Recognition'] },
+  'skill-backend':  { label: 'Backend Developer',   color: '#60a5fa', border: 'border-blue-400',   tech: ['Laravel', 'PHP', 'MySQL'] },
+  'skill-frontend': { label: 'Frontend Developer',  color: '#f472b6', border: 'border-pink-400',   tech: ['JavaScript', 'Tailwind CSS', 'Bootstrap'] },
+  'skill-mobile':   { label: 'Mobile Developer',    color: '#4ade80', border: 'border-green-400',  tech: ['Java (Android)'] },
+};
+
+const overlay   = document.getElementById('drawer-overlay');
+const drawer    = document.getElementById('skill-drawer');
+const drawerTitle = document.getElementById('drawer-title');
+const drawerTags  = document.getElementById('drawer-tags');
+const drawerClose = document.getElementById('drawer-close');
+const drawerHandle = document.getElementById('drawer-handle');
+
+function openDrawer(id) {
+  const d = drawerData[id];
+  if (!d) return;
+
+  drawerTitle.textContent = d.label;
+  drawerTitle.style.color = d.color;
+  drawerHandle.style.backgroundColor = d.color;
+
+  // build tags
+  drawerTags.innerHTML = '';
+  d.tech.forEach(t => {
+    const span = document.createElement('span');
+    span.textContent = t;
+    span.style.cssText = `
+      display:inline-block;
+      padding:6px 16px;
+      border-radius:9999px;
+      border:1px solid ${d.color};
+      color:${d.color};
+      font-size:0.9rem;
+      font-weight:600;
+      background:rgba(0,0,0,0.25);
+    `;
+    drawerTags.appendChild(span);
+  });
+
+  overlay.classList.remove('hidden');
+  const isDesktop = window.innerWidth >= 768;
+  requestAnimationFrame(() => {
+    overlay.style.opacity = '1';
+    drawer.style.transform = isDesktop ? 'translateX(-50%) translateY(0)' : 'translateY(0)';
+  });
+
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  const isDesktop = window.innerWidth >= 768;
+  overlay.style.opacity = '0';
+  drawer.style.transform = isDesktop ? 'translateX(-50%) translateY(100%)' : 'translateY(100%)';
+  document.body.style.overflow = '';
+  setTimeout(() => overlay.classList.add('hidden'), 300);
+}
+
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeDrawer();
+});
+drawerClose.addEventListener('click', closeDrawer);
+drawerHandle.addEventListener('click', closeDrawer);
+// swipe-down to close
+let touchStartY = 0;
+drawer.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+drawer.addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - touchStartY > 60) closeDrawer();
+}, { passive: true });
