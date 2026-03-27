@@ -114,19 +114,17 @@ function openDrawer(id) {
   });
 
   overlay.classList.remove('hidden');
-  const isDesktop = window.innerWidth >= 768;
   requestAnimationFrame(() => {
     overlay.style.opacity = '1';
-    drawer.style.transform = isDesktop ? 'translateX(-50%) translateY(0)' : 'translateY(0)';
+    drawer.style.transform = 'translateY(0)';
   });
 
   document.body.style.overflow = 'hidden';
 }
 
 function closeDrawer() {
-  const isDesktop = window.innerWidth >= 768;
   overlay.style.opacity = '0';
-  drawer.style.transform = isDesktop ? 'translateX(-50%) translateY(100%)' : 'translateY(100%)';
+  drawer.style.transform = 'translateY(100%)';
   document.body.style.overflow = '';
   setTimeout(() => overlay.classList.add('hidden'), 300);
 }
@@ -135,7 +133,7 @@ overlay.addEventListener('click', (e) => {
   if (e.target === overlay) closeDrawer();
 });
 drawerClose.addEventListener('click', closeDrawer);
-drawerHandle.addEventListener('click', closeDrawer);
+
 // swipe-down to close
 let touchStartY = 0;
 drawer.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
