@@ -11,52 +11,95 @@
     <link rel="stylesheet" href="output.css">
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        /* ── Drawer overlay ── */
+        <style>
+        /* ── Overlay ── */
         #drawer-overlay {
             position: fixed;
             inset: 0;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(4px);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             opacity: 0;
+            pointer-events: none;
             transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        #drawer-overlay.is-open {
+            opacity: 1;
+            pointer-events: all;
         }
 
-        /* ── Drawer panel ── */
+        /* ── Mobile: bottom sheet ── */
         #skill-drawer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: relative;
             z-index: 101;
-            height: 50%;
+            width: 100%;
             background: #1e1e1e;
-            border-top-left-radius: 24px;
-            border-top-right-radius: 24px;
-            transform: translateY(100%);
-            transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
             display: flex;
             flex-direction: column;
-            padding: 0 24px 32px;
-            box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+            padding: 0 24px 40px;
+            box-shadow: 0 -8px 48px rgba(0,0,0,0.6);
+            height: 50vh;
+            border-radius: 24px 24px 0 0;
+            overflow: hidden;
+            will-change: transform, height;
+            /* start off-screen below */
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.32,0.72,0,1),
+                        height 0.32s cubic-bezier(0.32,0.72,0,1);
+        }
+        #skill-drawer.sheet-open {
+            transform: translateY(0);
         }
 
-        /* pill handle */
+        /* ── Desktop: centered modal ── */
+        @media (min-width: 768px) {
+            #drawer-overlay {
+                align-items: center;
+                justify-content: center;
+            }
+            #skill-drawer {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0.88);
+                width: min(460px, 90vw);
+                height: auto !important;
+                min-height: 220px;
+                border-radius: 20px;
+                padding: 32px 32px 36px;
+                box-shadow: 0 24px 80px rgba(0,0,0,0.75);
+                transition: transform 0.28s cubic-bezier(0.34,1.4,0.64,1),
+                            opacity 0.22s ease;
+                opacity: 0;
+            }
+            #skill-drawer.sheet-open {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            #drawer-handle { display: none; }
+        }
+
+        /* ── Handle pill ── */
         #drawer-handle {
-            width: 48px;
+            width: 44px;
             height: 5px;
             border-radius: 9999px;
-            background: #555;
-            margin: 14px auto 20px;
+            background: #444;
+            margin: 14px auto 18px;
             flex-shrink: 0;
+            cursor: grab;
             transition: background 0.3s;
+            touch-action: none;
         }
 
         #drawer-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             flex-shrink: 0;
         }
 
@@ -69,8 +112,8 @@
 
         #drawer-close {
             position: absolute;
-            top: 18px;
-            right: 20px;
+            top: 16px;
+            right: 18px;
             background: #2e2e2e;
             border: none;
             color: #aaa;
@@ -83,13 +126,11 @@
             justify-content: center;
             font-size: 14px;
             transition: background 0.2s, color 0.2s;
+            z-index: 10;
         }
         #drawer-close:hover { background: #3a3a3a; color: #fff; }
 
-        /* skill cards — keep existing look, just trigger drawer now */
-        .skill-card {
-            cursor: pointer;
-        }
+        .skill-card { cursor: pointer; }
     </style>
 </head>
 
@@ -367,9 +408,9 @@
 
 
     <!-- ── Skill Drawer ── -->
-    <div id="drawer-overlay" class="hidden">
+    <div id="drawer-overlay">
         <div id="skill-drawer">
-            <div id="drawer-handle"></div>
+            <div id="drawer-handle" title="Drag up to expand"></div>
             <button id="drawer-close" aria-label="Close">
                 <i class="fa-solid fa-xmark"></i>
             </button>

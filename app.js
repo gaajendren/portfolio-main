@@ -71,21 +71,38 @@ function show_toast(){
 }
 
 
-// ── Skill Drawer ──────────────────────────────────────────────────────────────
+// ── Skill Drawer ────────────────────────────────────────────────────────────
 
 const drawerData = {
-  'skill-ai':       { label: 'AI Developer',        color: '#facc15', border: 'border-yellow-400', tech: ['YOLO', 'DeepSort', 'Face Recognition'] },
-  'skill-backend':  { label: 'Backend Developer',   color: '#60a5fa', border: 'border-blue-400',   tech: ['Laravel', 'PHP', 'MySQL'] },
-  'skill-frontend': { label: 'Frontend Developer',  color: '#f472b6', border: 'border-pink-400',   tech: ['JavaScript', 'Tailwind CSS', 'Bootstrap'] },
-  'skill-mobile':   { label: 'Mobile Developer',    color: '#4ade80', border: 'border-green-400',  tech: ['Java (Android)'] },
+  'skill-ai':       { label: 'AI Developer',       color: '#facc15', tech: ['YOLO', 'DeepSort', 'Face Recognition'] },
+  'skill-backend':  { label: 'Backend Developer',  color: '#60a5fa', tech: ['Laravel', 'PHP', 'MySQL'] },
+  'skill-frontend': { label: 'Frontend Developer', color: '#f472b6', tech: ['JavaScript', 'Tailwind CSS', 'Bootstrap'] },
+  'skill-mobile':   { label: 'Mobile Developer',   color: '#4ade80', tech: ['Java (Android)'] },
 };
 
-const overlay   = document.getElementById('drawer-overlay');
-const drawer    = document.getElementById('skill-drawer');
+const overlay     = document.getElementById('drawer-overlay');
+const drawer      = document.getElementById('skill-drawer');
 const drawerTitle = document.getElementById('drawer-title');
 const drawerTags  = document.getElementById('drawer-tags');
 const drawerClose = document.getElementById('drawer-close');
-const drawerHandle = document.getElementById('drawer-handle');
+const drawerHandle= document.getElementById('drawer-handle');
+
+// Heights as % of viewport for mobile sheet
+const SNAP_HALF = 50;   // default
+const SNAP_FULL = 92;   // expanded
+
+let currentSnapPct = SNAP_HALF;
+
+function isMobile() { return window.innerWidth < 768; }
+
+function setDrawerHeight(pct, animated) {
+  if (!isMobile()) return;
+  drawer.style.transition = animated
+    ? 'height 0.32s cubic-bezier(0.32,0.72,0,1)'
+    : 'none';
+  drawer.style.height = pct + 'vh';
+  currentSnapPct = pct;
+}
 
 function openDrawer(id) {
   const d = drawerData[id];
@@ -95,48 +112,96 @@ function openDrawer(id) {
   drawerTitle.style.color = d.color;
   drawerHandle.style.backgroundColor = d.color;
 
-  // build tags
   drawerTags.innerHTML = '';
   d.tech.forEach(t => {
     const span = document.createElement('span');
     span.textContent = t;
     span.style.cssText = `
       display:inline-block;
-      padding:6px 16px;
+      padding:6px 18px;
       border-radius:9999px;
       border:1px solid ${d.color};
       color:${d.color};
       font-size:0.9rem;
       font-weight:600;
-      background:rgba(0,0,0,0.25);
+      background:rgba(0,0,0,0.2);
     `;
     drawerTags.appendChild(span);
   });
 
-  overlay.classList.remove('hidden');
-  requestAnimationFrame(() => {
-    overlay.style.opacity = '1';
-    drawer.style.transform = 'translateY(0)';
-  });
+  // reset mobile height
+  if (isMobile()) {
+    drawer.style.transition = 'none';
+    drawer.style.height = SNAP_HALF + 'vh';
+    currentSnapPct = SNAP_HALF;
+  }
 
+  // show overlay + animate drawer in
+  requestAnimationFrame(() => {
+    overlay.classList.add('is-open');
+    requestAnimationFrame(() => drawer.classList.add('sheet-open'));
+  });
   document.body.style.overflow = 'hidden';
 }
 
 function closeDrawer() {
-  overlay.style.opacity = '0';
-  drawer.style.transform = 'translateY(100%)';
+  overlay.classList.remove('is-open');
+  drawer.classList.remove('sheet-open');
   document.body.style.overflow = '';
-  setTimeout(() => overlay.classList.add('hidden'), 300);
 }
 
-overlay.addEventListener('click', (e) => {
-  if (e.target === overlay) closeDrawer();
-});
+overlay.addEventListener('click', e => { if (e.target === overlay) closeDrawer(); });
 drawerClose.addEventListener('click', closeDrawer);
 
-// swipe-down to close
-let touchStartY = 0;
-drawer.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
-drawer.addEventListener('touchend', e => {
-  if (e.changedTouches[0].clientY - touchStartY > 60) closeDrawer();
-}, { passive: true });
+// ── Drag-to-expand (mobile only) ─────────────────────────────────────────────
+let dragStartY = 0;
+let dragStartH = 0;
+let dragging   = false;
+
+function onDragStart(clientY) {
+  if (!isMobile()) return;
+  dragging    = true;
+  dragStartY  = clientY;
+  dragStartH  = drawer.getBoundingClientRect().height;
+  drawer.style.transition = 'none';
+}
+
+function onDragMove(clientY) {
+  if (!dragging || !isMobile()) return;
+  const delta  = dragStartY - clientY;           // positive = dragging up
+  const newH   = Math.min(
+    window.innerHeight * 0.94,
+    Math.max(window.innerHeight * 0.25, dragStartH + delta)
+  );
+  drawer.style.height = newH + 'px';
+}
+
+function onDragEnd(clientY) {
+  if (!dragging) return;
+  dragging = false;
+  const delta = dragStartY - clientY;
+  const vh    = window.innerHeight;
+  const curPx = drawer.getBoundingClientRect().height;
+  const curPct= (curPx / vh) * 100;
+
+  // snap logic
+  let target;
+  if (delta > 40)       target = SNAP_FULL;  // dragged up  → expand
+  else if (delta < -40) target = SNAP_HALF;  // dragged down → shrink
+  else                  target = currentSnapPct;
+
+  // if shrunk below 30vh → close
+  if (curPct < 30 && delta < 0) { closeDrawer(); return; }
+
+  setDrawerHeight(target, true);
+}
+
+// Touch
+drawerHandle.addEventListener('touchstart', e => onDragStart(e.touches[0].clientY), { passive: true });
+drawerHandle.addEventListener('touchmove',  e => { e.preventDefault(); onDragMove(e.touches[0].clientY); }, { passive: false });
+drawerHandle.addEventListener('touchend',   e => onDragEnd(e.changedTouches[0].clientY));
+
+// Mouse (for devtools mobile sim)
+drawerHandle.addEventListener('mousedown',  e => { onDragStart(e.clientY); e.preventDefault(); });
+window.addEventListener('mousemove',        e => { if (dragging) onDragMove(e.clientY); });
+window.addEventListener('mouseup',          e => { if (dragging) onDragEnd(e.clientY); });
